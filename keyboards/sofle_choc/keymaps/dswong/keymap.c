@@ -169,48 +169,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 unregister_code(KC_LALT);
             }
             break;
-        // case KC_COPY:
-        //     if (record->event.pressed) {
-        //         // CMD-c on Mac, but we have CTL and GUI swapped
-        //         register_mods(mod_config(MOD_LCTL));
-        //         register_code(KC_C);
-        //     } else {
-        //         unregister_mods(mod_config(MOD_LCTL));
-        //         unregister_code(KC_C);
-        //     }
-        //     return false;
-        // case KC_PASTE:
-        //     if (record->event.pressed) {
-        //         // CMD-v on Mac, but we have CTL and GUI swapped
-        //         register_mods(mod_config(MOD_LCTL));
-        //         register_code(KC_V);
-        //     } else {
-        //         unregister_mods(mod_config(MOD_LCTL));
-        //         unregister_code(KC_V);
-        //     }
-        //     return false;
-        // case KC_CUT:
-        //     if (record->event.pressed) {
-        //         // CMD-x on Mac, but we have CTL and GUI swapped
-        //         register_mods(mod_config(MOD_LCTL));
-        //         register_code(KC_X);
-        //     } else {
-        //         unregister_mods(mod_config(MOD_LCTL));
-        //         unregister_code(KC_X);
-        //     }
-        //     return false;
-        // case KC_UNDO:
-        //     if (record->event.pressed) {
-        //         // CMD-z on Mac, but we have CTL and GUI swapped
-        //         register_mods(mod_config(MOD_LCTL));
-        //         register_code(KC_Z);
-        //     } else {
-        //         unregister_mods(mod_config(MOD_LCTL));
-        //         unregister_code(KC_Z);
-        //     }
-        //     return false;
-        // default:
-        //     return true;
     }
     return true;
 }

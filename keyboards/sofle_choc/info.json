@@ -10,9 +10,6 @@
     },
     "processor": "atmega32u4",
     "bootloader": "caterina",
-    "split": {
-        "soft_serial_pin": "D2"
-    },
     "layouts": {
         "LAYOUT": {
             "layout": [

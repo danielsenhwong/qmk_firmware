@@ -1,7 +1,8 @@
+# Declarations for RP2040 / Elite-Pi compatability
 # Declare the base for conversions
-# PIN_COMPATIBLE = elite_c
-# CONVERT_TO = elite_pi
-# BOOTLOADER = rp2040
+PIN_COMPATIBLE = elite_c
+CONVERT_TO = elite_pi
+BOOTLOADER = rp2040
 
 TRI_LAYER_ENABLE = yes
 

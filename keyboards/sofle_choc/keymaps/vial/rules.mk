@@ -1,5 +1,5 @@
 # Declare the base for conversions
-#PIN_COMPATIBLE = elite_c
+PIN_COMPATIBLE = elite_c
 #CONVERT_TO = elite_pi
 BOARD = GENERIC_RP_RP2040
 BOOTLOADER = rp2040

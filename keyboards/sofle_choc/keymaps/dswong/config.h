@@ -16,6 +16,7 @@
 #pragma once
 
 // For RP2040, set handedness in EEPROM
+// Flash with:
 // make sofle_choc:default:-bl uf2-split-left
 // make sofle_choc:default:-bl uf2-split-right
 #define EE_HANDS

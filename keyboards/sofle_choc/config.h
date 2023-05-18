@@ -20,32 +20,37 @@
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET // Activates the double-tap behavior
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 1000U // Timeout window in ms in which the double tap can occur.
 
+#define CUSTOM_LAYER_READ
 
 /* Key matrix configuration */
+/* moved to info.json */
 // #define MATRIX_ROW_PINS { C6, D7, E6, B4, B5 }
 // #define MATRIX_COL_PINS { F6, F7, B1, B3, B2, B6 }
 // #define DIODE_DIRECTION COL2ROW
 
 /* Handedness */
-#define MASTER_LEFT
+// #define MASTER_LEFT // redundant, this is default
 
 /* Encoder support */
-#define ENCODERS_PAD_A { F5 }
-#define ENCODERS_PAD_B { F4 }
-#define ENCODERS_PAD_A_RIGHT { F4 }
-#define ENCODERS_PAD_B_RIGHT { F5 }
+/* moved to info.json */
+// #define ENCODERS_PAD_A { F5 }
+// #define ENCODERS_PAD_B { F4 }
+// #define ENCODERS_PAD_A_RIGHT { F4 }
+// #define ENCODERS_PAD_B_RIGHT { F5 }
 
 /* RGB settings */
 #ifdef RGB_MATRIX_ENABLE
 #define WS2812_DI_PIN D3
-// #define RGB_DI_PIN D3
-// #define RGBLED_NUM 29
 #define RGB_MATRIX_LED_COUNT 58
-// #define RGB_MATRIX_SPLIT { 29, 29 }
+// #define RGB_DI_PIN D3 // moved to info.json
+// #define RGBLED_NUM 29 // moved to info.json
+// #define RGB_MATRIX_SPLIT { 29, 29 } // moved to info.json
 
 #define RGB_DISABLE_WHEN_USB_SUSPENDED     // turn off effects when suspended
-//#define SPLIT_TRANSPORT_MIRROR             // If LED_MATRIX_KEYPRESSES or LED_MATRIX_KEYRELEASES is enabled, you also will want to enable SPLIT_TRANSPORT_MIRROR
-// #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 100  // limits maximum brightness of LEDs (max 255). Higher may cause the controller to crash.
+#define SPLIT_TRANSPORT_MIRROR             // If LED_MATRIX_KEYPRESSES or LED_MATRIX_KEYRELEASES is enabled, you also will want to enable SPLIT_TRANSPORT_MIRROR
+
+// #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 100  // limits maximum brightness of LEDs (max 255). Higher may cause the controller to crash. // Moved to info.json
+
 #define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_CYCLE_LEFT_RIGHT
 #define RGB_MATRIX_DEFAULT_HUE 116
 #define RGB_MATRIX_DEFAULT_SAT 255

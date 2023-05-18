@@ -22,41 +22,42 @@
 
 #define CUSTOM_LAYER_READ
 
-/* Key matrix configuration */
-/* moved to info.json */
-// #define MATRIX_ROW_PINS { C6, D7, E6, B4, B5 }
-// #define MATRIX_COL_PINS { F6, F7, B1, B3, B2, B6 }
-// #define DIODE_DIRECTION COL2ROW
+/* RGB Light settings */
+#ifdef RBGLIGHT_ENABLE
+#define SPLIT_TRANSPORT_MIRROR
+#define SPLIT_LAYER_STATE_ENABLE
 
-/* Handedness */
-// #define MASTER_LEFT // redundant, this is default
+#define RGBLIGHT_DEFAULT_MODE RGBLIGHT_MODE_RAINBOW_MOOD
 
-/* Encoder support */
-/* moved to info.json */
-// #define ENCODERS_PAD_A { F5 }
-// #define ENCODERS_PAD_B { F4 }
-// #define ENCODERS_PAD_A_RIGHT { F4 }
-// #define ENCODERS_PAD_B_RIGHT { F5 }
+/* RGB Light Animations */
+// #define RGBLIGHT_EFFECT_ALTERNATING
+// #define RGBLIGHT_EFFECT_BREATHING
+// #define RGBLIGHT_EFFECT_CHRISTMAS
+// #define RGBLIGHT_EFFECT_KNIGHT
+// #define RGBLIGHT_EFFECT_RAINBOW_MOOD
+// #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
+// #define RGBLIGHT_EFFECT_RGB_TEST
+// #define RGBLIGHT_EFFECT_SNAKE
+// #define RGBLIGHT_EFFECT_STATIC_GRADIENT
+// #define RGBLIGHT_EFFECT_TWINKLE
 
-/* RGB settings */
+#endif
+
+/* RGB Matrix settings */
 #ifdef RGB_MATRIX_ENABLE
 #define WS2812_DI_PIN D3
+//#define WS2812_PIO_USE_PIO1
 #define RGB_MATRIX_LED_COUNT 58
-// #define RGB_DI_PIN D3 // moved to info.json
-// #define RGBLED_NUM 29 // moved to info.json
-// #define RGB_MATRIX_SPLIT { 29, 29 } // moved to info.json
 
 #define RGB_DISABLE_WHEN_USB_SUSPENDED     // turn off effects when suspended
 #define SPLIT_TRANSPORT_MIRROR             // If LED_MATRIX_KEYPRESSES or LED_MATRIX_KEYRELEASES is enabled, you also will want to enable SPLIT_TRANSPORT_MIRROR
-
-// #define RGB_MATRIX_MAXIMUM_BRIGHTNESS 100  // limits maximum brightness of LEDs (max 255). Higher may cause the controller to crash. // Moved to info.json
 
 #define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_CYCLE_LEFT_RIGHT
 #define RGB_MATRIX_DEFAULT_HUE 116
 #define RGB_MATRIX_DEFAULT_SAT 255
 #define RGB_MATRIX_DEFAULT_VAL 36
 
-/* RGB Animations */
+/* RGB Matrix Animations */
 /* These modes don’t require any additional defines */
 // #define ENABLE_RGB_MATRIX_ALPHAS_MODS
 // #define ENABLE_RGB_MATRIX_GRADIENT_UP_DOWN

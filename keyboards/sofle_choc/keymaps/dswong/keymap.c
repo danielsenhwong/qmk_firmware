@@ -182,7 +182,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
 };
 #endif
 
-#ifdef OLED_ENABLE
+#if defined(OLED_ENABLE)
 
 static void render_logo(void) {
     static const char PROGMEM qmk_logo[] = {
@@ -209,11 +209,19 @@ static void print_status_narrow(void) {
             oled_write_ln_P(PSTR("WIN\n"), false);
         }
 
-        #ifdef RGB_MATRIX_ENABLE
+        #if defined(RGB_MATRIX_ENABLE)
         uint8_t mode  = rgb_matrix_get_mode();
         HSV     hsv   = rgb_matrix_get_hsv();
         uint8_t speed = rgb_matrix_get_speed();
-
+        #elif defined(RGBLIGHT_ENABLE)
+        uint8_t mode  = rgblight_get_mode();
+        HSV     hsv   = rgblight_get_hsv();
+        uint8_t speed = rgblight_get_speed();
+        #else
+        uint8_t mode  = 0;
+        HSV     hsv   = {"h": 0, "s": 0, "v": 0};
+        uint8_t speed = 0;
+        #endif
         oled_write_ln("RGB", false);
         write_int_ln(PSTR("Mo"), mode);
         write_int_ln(PSTR("H "), hsv.h);
@@ -221,9 +229,6 @@ static void print_status_narrow(void) {
         write_int_ln(PSTR("V "), hsv.v);
         write_int_ln(PSTR("Sp"), speed);
         oled_write_P(PSTR("\n\n\n"), false);
-        #else
-        oled_write_P(PSTR("\n\n\n\n\n\n\n\n\n"), false);
-        #endif
     } else {
         oled_write_P(PSTR("\n\n\n\n\n\n\n\n\n"), false);
         led_t led_usb_state = host_keyboard_led_state();

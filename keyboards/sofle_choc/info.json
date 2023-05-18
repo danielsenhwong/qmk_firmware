@@ -37,20 +37,31 @@
     },
     "rgblight": {
         "pin": "D3",
-        "led_count": 29,
+        "led_count": 58,
         "split": true,
         "split_count": [29, 29],
         "max_brightness": 100,
+        "hue_steps": 3,
+        "saturation_steps": 3,
+        "brightness_steps": 3,
+        "sleep": true,
         "animations": {
             "alternating": true,
             "breathing": true,
-            "ranbow_mood": true
+            "christmas": true,
+            "knight": true,
+            "ranbow_mood": true,
+            "rainbow_swirl": true,
+            "rgb_test": true,
+            "snake": true,
+            "static_gradient": true,
+            "twinkle": true
         }
     },
     "rgb_matrix": {
         "driver": "WS2812",
         "split_count": [29, 29],
-        "max_brightness": 100,
+        "max_brightness": 10,
         "animations": {
             "breathing": true,
             "colorband_sat": true,

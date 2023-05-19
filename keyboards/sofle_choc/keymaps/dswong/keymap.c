@@ -23,7 +23,7 @@ enum sofle_layers {
 };
 
 enum custom_keycodes {
-    KC_ENDASH = SAFE_RANGE,
+    KC_ENDASH = QK_KB_0,
     CS_EUR,
     CS_GBP,
     CS_JPY

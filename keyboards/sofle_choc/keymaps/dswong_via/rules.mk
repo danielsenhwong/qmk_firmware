@@ -19,5 +19,5 @@ TRI_LAYER_ENABLE = yes
 EXTRAKEY_ENABLE = yes     # Enable audio keys and system control
 LTO_ENABLE = no           # Disable for RP2040
 
-# VIA support
+# VIA and VIAL
 VIA_ENABLE = yes

@@ -1,3 +1,8 @@
+# Declare the base for conversions
+PIN_COMPATIBLE = elite_c
+#CONVERT_TO = elite_pi
+BOOTLOADER = rp2040
+
 ENCODER_ENABLE = yes
 ENCODER_MAP_ENABLE = yes
 
@@ -11,7 +16,8 @@ EXTRAKEY_ENABLE = yes
 
 # Enable link time optimization
 # Trade longer compile time for smaller firmware size
-LTO_ENABLE = yes
+# Disable for RP2040
+#LTO_ENABLE = yes
 
 # Change keymaps without flashing
 # https://caniusevia.com/

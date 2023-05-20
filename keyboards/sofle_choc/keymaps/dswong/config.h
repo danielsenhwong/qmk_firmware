@@ -15,23 +15,15 @@
  */
 #pragma once
 
-
-// RP2040 Reset Behavior
-#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET // Activates the double-tap behavior
-#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_TIMEOUT 1000U // Timeout window in ms in which the double tap can occur.
-
-
-// Set handedness
 // For RP2040, set handedness in EEPROM
 // Flash with:
 // make sofle_choc:default:-bl uf2-split-left
 // make sofle_choc:default:-bl uf2-split-right
-// #define EE_HANDS
+#define EE_HANDS
 
 // Plug USB into the left half of the keyboard
 // see https://docs.qmk.fm/#/feature_split_keyboard?id=setting-handedness
 #define MASTER_LEFT
-#define SOFT_SERIAL_PIN D2
 
 // Enabling this option changes the startup behavior to listen for an
 // active USB communication to delegate which part is master and which
@@ -42,8 +34,6 @@
 // I've found this helps with some ProMicros where the slave does not boot
 #define SPLIT_USB_DETECT
 
-
-// RGB Matrix Settings
 #ifdef RGB_MATRIX_ENABLE
 
 #define RGB_DISABLE_WHEN_USB_SUSPENDED     // turn off effects when suspended

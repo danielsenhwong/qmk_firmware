@@ -22,13 +22,13 @@
     },
     "processor": "atmega32u4",
     "encoder": {
-        "rotary": [
-            { "pin_a": "F5", "pin_b": "F4"}
+        "rortary": [
+            { "pin_a": "F5", "pin_b": "F4"},
             { "pin_a": "F4", "pin_b": "F5"}
         ]
     },
     "split": {
-        "soft_serial_pin": "D2",
+        "soft_serial_pin": "D2"
     },
     "usb": {
         "vid": "0xFC32",
@@ -48,17 +48,8 @@
         }
     },
     "rgb_matrix": {
-        "driver": "WS2812",
         "split_count": [29, 29],
-        "max_brightness": 100,
-        "animations": {
-            "breathing": true,
-            "colorband_sat": true,
-            "cycle_all": true,
-            "cycle_left_right": true,
-            "cycle_up_down": true,
-            "rainbow_beacon": true
-        }
+        "max_brightness": 100
     },
     "layouts": {
         "LAYOUT": {

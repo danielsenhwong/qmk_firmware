@@ -7,6 +7,3 @@ Based on this reddit comment (https://www.reddit.com/r/ErgoMechKeyboards/comment
 I tried flashing with the sofle/rev1 firmware, and it works! No RGB, but the keyboard works.
 
 I edited my rules.mk to set RGB_MATRIX_ENABLE = no, and modified the keymap.c to only query for the RGB settings if RGB_MATRIX was defined (it was giving a compile error if I disabled RGB_MATRIX without doing this). The keyboard works!
-
-May 18, 2023
-RGBLIGHT works, RGB_MATRIX does not.

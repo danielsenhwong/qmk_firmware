@@ -222,7 +222,6 @@ static void print_status_narrow(void) {
         HSV     hsv   = {"h": 0, "s": 0, "v": 0};
         uint8_t speed = 0;
         #endif
-
         oled_write_ln("RGB", false);
         write_int_ln(PSTR("Mo"), mode);
         write_int_ln(PSTR("H "), hsv.h);

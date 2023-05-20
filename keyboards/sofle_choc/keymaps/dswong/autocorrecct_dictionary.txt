@@ -1,4 +1,0 @@
-:thier:         -> thier
-:lenght:        -> length
-:hsould:        -> should
-:teh:           -> the

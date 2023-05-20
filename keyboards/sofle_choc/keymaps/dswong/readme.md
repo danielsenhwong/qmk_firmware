@@ -10,14 +10,3 @@ I edited my rules.mk to set RGB_MATRIX_ENABLE = no, and modified the keymap.c to
 
 May 18, 2023
 RGBLIGHT works, RGB_MATRIX does not.
-
-May 19, 2023
-Adding EE_CLR and CG_NORM to ADJUST layer to clear EEPROM. Ctrl/GUI swap state is being preserved across firmware flashes and reboots, so want to be able to reset all settings to base.
-
-Adjusted display to show CG status on all layers, not just ADJUST.
-
-Starting working on building an autocorrect library, need to keep track of common typos and also actually write the code to implement. https://github.com/qmk/qmk_firmware/blob/master/docs/feature_autocorrect.md
-
-Added combos to the keyboard but have not defined any: https://docs.qmk.fm/#/feature_combo?id=combos
-
-Need to split out declaration of encoders in info.json. If both are combined into the "encoders" object, clockwise rotation of the left encoder triggers activation of the keycode mapped to the counterclockwise rotation of the right encoder as it is being interpreted that they share the same pin. The right encoder needs to go in the "split" object.

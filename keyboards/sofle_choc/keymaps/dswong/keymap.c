@@ -23,20 +23,10 @@ enum sofle_layers {
 };
 
 enum custom_keycodes {
-    KC_ENDASH = QK_KB_0,    // Insert en dash (ALT + 0150)
-    CS_EUR,                 // Insert EUR currency symbol (ALT + 0128)
-    CS_GBP,                 // Insert GBP currency symbol (ALT + 0163)
-    CS_JPY,                 // Insert JPY currency symbol (ALT + 0165)
-    RL_RESET,               // Reload RGB lighting settings from EEPROM
-    RL_CVGRN,               // Set hue to CVGreen
-    RL_RED, 
-    RL_ORG, 
-    RL_YEL, 
-    RL_GRN,
-    RL_BLU,
-    RL_IND, 
-    RL_VIO, 
-    RL_WHT
+    KC_ENDASH = QK_KB_0,
+    CS_EUR,
+    CS_GBP,
+    CS_JPY
 };
 
 
@@ -108,23 +98,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 /* ADJUST
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |EE_CLR|Rainbo|RSwirl|Gradnt| Xmas |Twinkl|                    |RGBRed|RGBOrg|RGBYel|RGBGrn|RGBBlu|ACTogg|
+ * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | BOOT | Spd+ | Val+ | Sat+ | Hue+ |Mode+ |                    |RGBInd|RGBVio|RGBWht|      |      |ComboT|
+ * | BOOT | Spd+ | Val+ | Sat+ | Hue+ |Mode+ |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |LShift| Spd- | Val- | Sat- | Hue- |Mode- |-------.    ,-------|      | VOLDO| MUTE | VOLUP|      |      |
- * |------+------+------+------+------+------|RGBTogg|    |RL_Rset|------+------+------+------+------+------|
- * |CGTogg|Static|Breath|Snake |Knight|RL_CVG|-------|    |-------|      | PREV | PLAY | NEXT |      |      |
+ * |      | Spd- | Val- | Sat- | Hue- |Mode- |-------.    ,-------|      | VOLDO| MUTE | VOLUP|      |      |
+ * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
+ * |MacWin|      |      |      |      |      |-------|    |-------|      | PREV | PLAY | NEXT |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *            |      |      |      |TO(0) | /       /       \      \  |TO(0) |      |      |      |
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
  *            `----------------------------------'           '------''---------------------------'
  */
 [_ADJUST] = LAYOUT(
-    EE_CLR,  RGB_M_R, RGB_M_SW, RGB_M_GR, GB_M_X, RGB_M_TW,                     RL_RED,  RL_ORG,  RL_YEL,  RL_GRN,  RL_BLU,  AC_TOGG,
-    QK_BOOT, RGB_SPI, RGB_VAI, RGB_SAI, RGB_HUI, RGB_MOD,                       RL_IND,  RL_VIO,  RL_WHT,  XXXXXXX, XXXXXXX, CM_TOGG,
-    KC_LSFT, RGB_SPD, RGB_VAD, RGB_SAD, RGB_HUD, RGB_RMOD,                      XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, XXXXXXX,
-    CG_TOGG, RGB_M_P, RGB_M_B, RGB_M_SN, RGB_M_K, RL_CVGRN, RGB_TOG,   RL_RESET, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    QK_BOOT, RGB_SPI, RGB_VAI, RGB_SAI, RGB_HUI, RGB_MODE_FORWARD,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, RGB_SPD, RGB_VAD, RGB_SAD, RGB_HUD, RGB_MODE_REVERSE,                       XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, XXXXXXX,
+    CG_TOGG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
                       _______, _______, _______, TO(0),   _______,     _______, TO(0),   _______, _______, _______
     )
 };
@@ -179,78 +169,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 unregister_code(KC_LALT);
             }
             break;
-        case RL_RESET:
-            if (record->event.pressed) {
-                rgblight_sethsv(HSV_GOLD);    // Hue: teal/green, Sat: max, Val: max limit
-                rgblight_mode(9);
-                rgblight_set_speed(0);
-                return false;
-            }
-            break;
-        case RL_CVGRN:  // Set hue to CVGreen
-            if (record->event.pressed) {
-                rgblight_sethsv(96, 255, 100);
-                return false;
-            }
-            break;
-        case RL_RED: 
-            if (record->event.pressed) {
-                rgblight_sethsv(HSV_RED);
-                return false;
-            }
-            break;
-        case RL_ORG: 
-        if (record->event.pressed) {
-                rgblight_sethsv(HSV_ORANGE);
-                return false;
-            }
-            break;
-        case RL_YEL: 
-        if (record->event.pressed) {
-                rgblight_sethsv(HSV_YELLOW);
-                return false;
-            }
-            break;
-        case RL_GRN:
-        if (record->event.pressed) {
-                rgblight_sethsv(HSV_GREEN);
-                return false;
-            }
-            break;
-        case RL_BLU:
-        if (record->event.pressed) {
-                rgblight_sethsv(HSV_BLUE);
-                return false;
-            }
-            break;
-        case RL_IND: 
-        if (record->event.pressed) {
-                rgblight_setrgb(0x4B, 0x00, 0x82);
-                return false;
-            }
-            break;
-        case RL_VIO: 
-        if (record->event.pressed) {
-                rgblight_setrgb(0x8F, 0x00, 0xFF);
-                return false;
-            }
-            break;
-        case RL_WHT:
-        if (record->event.pressed) {
-                rgblight_sethsv(HSV_WHITE);
-                return false;
-            }
-            break;
     }
     return true;
 }
 
 #if defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
-    [_QWERTY] = { ENCODER_CCW_CW(KC_WH_U, KC_WH_D),  ENCODER_CCW_CW(KC_VOLD, KC_VOLU)  },
-    [_LOWER] =  { ENCODER_CCW_CW(RGB_RMOD, RGB_MOD), ENCODER_CCW_CW(KC_WH_L, KC_WH_R) },
-    [_RAISE] =  { ENCODER_CCW_CW(RGB_VAD, RGB_VAI),  ENCODER_CCW_CW(RGB_SPD, RGB_SPI)  },
-    [_ADJUST] = { ENCODER_CCW_CW(RGB_HUD, RGB_HUI),  ENCODER_CCW_CW(RGB_SAD, RGB_SAI)  },
+    [_QWERTY] =   { ENCODER_CCW_CW(KC_PGUP, KC_PGDN), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)  },
+    [_LOWER] =  { ENCODER_CCW_CW(RGB_HUD, RGB_HUI),   ENCODER_CCW_CW(RGB_SAD, RGB_SAI)  },
+    [_RAISE] =  { ENCODER_CCW_CW(RGB_VAD, RGB_VAI),   ENCODER_CCW_CW(RGB_SPD, RGB_SPI)  },
+    [_ADJUST] = { ENCODER_CCW_CW(RGB_RMOD, RGB_MOD),  ENCODER_CCW_CW(KC_RIGHT, KC_LEFT) },
 };
 #endif
 
@@ -271,37 +199,16 @@ void write_int_ln(const char* prefix, uint8_t value) {
     oled_write(get_u8_str(value, ' '), false);
 }
 
-// Hue values are 0 – 360, use this range when reporting on the OLED
-// The QMK get_u16_str() function has a buffer of 6 since the max value of a 16-bit integer is 625535
-// but there is no way of changing this, so declaring a new version here
-// Also declaring a 16-bit version of the write_int_ln() function
-const char *get_u16_str_buf4(uint16_t curr_num, char curr_pad) {
-    static char     buf[4]   = {0};
-    static uint16_t last_num = 0xFF;
-    static char     last_pad = '\0';
-    if (last_num == curr_num && last_pad == curr_pad) {
-        return buf;
-    }
-    last_num = curr_num;
-    last_pad = curr_pad;
-    return get_numeric_str(buf, sizeof(buf), curr_num, curr_pad);
-}
-
-void write_int16_ln(const char* prefix, uint16_t value) {
-    oled_write_P(prefix, false);
-    oled_write(get_u16_str_buf4(value, ' '), false);
-}
-
 static void print_status_narrow(void) {
     oled_write_ln_P(PSTR("SofleChoc _____"), false);
 
-    if (get_highest_layer(layer_state) == _ADJUST) {  
-        // if (keymap_config.swap_lctl_lgui) {
-        //     oled_write_ln_P(PSTR("CG sw"), false);
-        // } else {
-        //     oled_write_ln_P(PSTR("     "), false);
-        // }
-        
+    if (get_highest_layer(layer_state) == _ADJUST) {
+        if (keymap_config.swap_lctl_lgui) {
+            oled_write_ln_P(PSTR("MAC\n"), false);
+        } else {
+            oled_write_ln_P(PSTR("WIN\n"), false);
+        }
+
         #if defined(RGB_MATRIX_ENABLE)
         uint8_t mode  = rgb_matrix_get_mode();
         HSV     hsv   = rgb_matrix_get_hsv();
@@ -318,27 +225,19 @@ static void print_status_narrow(void) {
 
         oled_write_ln("RGB", false);
         write_int_ln(PSTR("Mo"), mode);
-        write_int16_ln(PSTR("H "), ((uint16_t) hsv.h * 360 / 255)); // calculate and display the hue for 360 not 255 max value
-        write_int_ln(PSTR("S "), (hsv.s * 100 / 255));                // display the saturation in 0 – 100 scale
+        write_int_ln(PSTR("H "), hsv.h);
+        write_int_ln(PSTR("S "), hsv.s);
         write_int_ln(PSTR("V "), hsv.v);
         write_int_ln(PSTR("Sp"), speed);
-        oled_write_P(PSTR("\n"), false);
+        oled_write_P(PSTR("\n\n\n"), false);
     } else {
-        oled_write_P(PSTR("\n\n\n\n\n\n\n"), false);
-    }
-    
-    // Show me the current status of CAPS LOCK and CG_SWAP on all layers
-    led_t led_usb_state = host_keyboard_led_state();
-    if (led_usb_state.caps_lock) {
-        oled_write_ln_P(PSTR(" CAP "), true);
-    } else {
-        oled_write_ln_P(PSTR("     "), false);
-    }
-    
-    if (keymap_config.swap_lctl_lgui) {
-        oled_write_ln_P(PSTR("CG ←→"), true);
-    } else {
-        oled_write_ln_P(PSTR("     "), false);
+        oled_write_P(PSTR("\n\n\n\n\n\n\n\n\n"), false);
+        led_t led_usb_state = host_keyboard_led_state();
+        if (led_usb_state.caps_lock) {
+            oled_write_ln_P(PSTR(" CAP "), true);
+        } else {
+            oled_write_ln_P(PSTR("     "), false);
+        }
     }
 
     // Print current layer

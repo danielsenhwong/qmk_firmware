@@ -111,17 +111,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *            `----------------------------------'           '------''---------------------------'
  */
 [_ADJUST] = LAYOUT(
-<<<<<<< HEAD
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     QK_BOOT, RGB_SPI, RGB_VAI, RGB_SAI, RGB_HUI, RGB_MODE_FORWARD,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     XXXXXXX, RGB_SPD, RGB_VAD, RGB_SAD, RGB_HUD, RGB_MODE_REVERSE,                       XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, XXXXXXX,
     CG_TOGG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
-=======
-    EE_CLR,  RGB_M_R, RGB_M_SW, RGB_M_GR, GB_M_X, RGB_M_TW,                     RL_RED,  RL_ORG,  RL_YEL,  RL_GRN,  RL_BLU,  AC_TOGG,
-    QK_BOOT, RGB_SPI, RGB_VAI, RGB_SAI, RGB_HUI, RGB_MOD,                       RL_IND,  RL_VIO,  RL_WHT,  XXXXXXX, XXXXXXX, CM_TOGG,
-    KC_LSFT, RGB_SPD, RGB_VAD, RGB_SAD, RGB_HUD, RGB_RMOD,                      XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, XXXXXXX,
-    CG_TOGG, RGB_M_P, RGB_M_B, RGB_M_SN, RGB_M_K, RL_CVGRN, RGB_TOG,   RL_RESET, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
->>>>>>> parent of 261ea2beab (RGB tweaks)
                       _______, _______, _______, TO(0),   _______,     _______, TO(0),   _______, _______, _______
     )
 };

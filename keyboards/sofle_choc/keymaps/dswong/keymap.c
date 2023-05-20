@@ -27,7 +27,7 @@ enum custom_keycodes {
     CS_EUR,                 // Insert EUR currency symbol (ALT + 0128)
     CS_GBP,                 // Insert GBP currency symbol (ALT + 0163)
     CS_JPY,                 // Insert JPY currency symbol (ALT + 0165)
-    RL_RESET,               // Reload RGB lighting settings from EEPROM
+    RL_RST,                 // Reset RGB lighting settings
     RL_CVGRN,               // Set hue to CVGreen
     RL_RED, 
     RL_ORG, 
@@ -36,7 +36,8 @@ enum custom_keycodes {
     RL_BLU,
     RL_IND, 
     RL_VIO, 
-    RL_WHT
+    RL_WHT,
+    RL_GLD
 };
 
 
@@ -48,54 +49,54 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | Tab  |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  | - _  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |LShift|   A  |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |  ; : | ' "  |
+ * |LShift|   A  |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |  ; : | Enter|
  * |------+------+------+------+------+------|  Mute |    | Pause |------+------+------+------+------+------|
- * |LCtrl |   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |  , < |  . > |  / ? | Enter|
+ * |LCtrl |   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |  , < |  . > |  / ? | ' "  |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            | MEH  | LGUI | LALT |TO(1) | /Space  /       \Space \  |TO(2) | RALT | RGUI | RCTL |
+ *            | MEH  | LGUI | LALT |TO(1) | /Space  /       \Space \  |TO(2) |RSHIFT| [ {  | = +  |
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
  *            `----------------------------------'           '------''---------------------------'
  */
 
 [_QWERTY] = LAYOUT(
-    QK_GESC,  KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                       KC_6,     KC_7,     KC_8,    KC_9,    KC_0,    KC_BSPC,
-    KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                       KC_Y,     KC_U,     KC_I,    KC_O,    KC_P,    KC_MINUS,
-    KC_LSFT,  KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                       KC_H,     KC_J,     KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-    KC_LCTL,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,    KC_MUTE,   KC_MPLY,KC_N,     KC_M,     KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,
-                      KC_MEH,  KC_LGUI, KC_LALT, TO(1),   KC_SPC,    KC_SPC, TO(2),    KC_RALT,  KC_RGUI, KC_RCTL
+    QK_GESC,  KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                       KC_6,     KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
+    KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                       KC_Y,     KC_U,    KC_I,    KC_O,    KC_P,    KC_MINUS,
+    KC_LSFT,  KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                       KC_H,     KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
+    KC_LCTL,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,    KC_MUTE,   KC_MPLY,KC_N,     KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_QUOT,
+                      KC_MEH,  KC_LGUI, KC_LALT, TO(1),   KC_SPC,    KC_SPC, TO(2),    KC_RSFT, KC_LBRC, KC_EQUAL
 ),
 /* LOWER
  * ,----------------------------------------.                    ,-----------------------------------------.
- * |      |  –   |  €   |  £   |  ¥   |      |                    | Ins  | Home | PgUp |  - _ | = +  | Bspc |
+ * | ____ |  –   |  €   |  £   |  ¥   |      |                    | Ins  | Home | PgUp |  - _ | = +  | ____ |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      | Pscr | Menu |      |      |                    | Del  | End  | PgDn | KP_7 | KP_8 | KP_9 |
+ * | ____ |      | Pscr | Menu |      |      |                    | Del  | End  | PgDn | KP_7 | KP_8 | KP_9 |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | Caps | LAlt | LCtl |LShift|      |      |-------.    ,-------|      |  Up  |      | KP_4 | KP_5 | KP_6 |
- * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |      | Undo |  Cut | Copy | Paste|      |-------|    |-------| Left | Down | Right| KP_1 | KP_2 | KP_3 |
+ * |------+------+------+------+------+------| ____  |    | ____  |------+------+------+------+------+------|
+ * | ____ | Undo |  Cut | Copy | Paste|      |-------|    |-------| Left | Down | Right| KP_1 | KP_2 | KP_3 |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            | LCTL | LGUI | LALT |TO(0) | /       /       \      \  |TO(3) |      |      | KP_0 |
+ *            | ____ | ____ | ____ |TO(0) | / ____  /       \ ____ \  |TO(3) | ____ | ] }  | KP_0 |
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
  *            `----------------------------------'           '------''---------------------------'
  */
 [_LOWER] = LAYOUT(
-    _______, KC_ENDASH, CS_EUR, CS_GBP, CS_JPY,   _______,                         KC_INS,  KC_HOME,   KC_PGUP, KC_MINUS,  KC_EQUAL, _______,
-    _______, XXXXXXX, KC_PSCR, KC_APP,  XXXXXXX,  XXXXXXX,                         KC_DEL,  KC_END,    KC_PGDN, KC_KP_7,   KC_KP_8,  KC_KP_9,
-    KC_CAPS, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,  XXXXXXX,                         XXXXXXX, KC_UP,     XXXXXXX, KC_KP_4,   KC_KP_5,  KC_KP_6,
-    _______, KC_UNDO, KC_CUT,  KC_COPY, KC_PASTE, XXXXXXX, _______,       _______, KC_LEFT, KC_DOWN,   KC_RGHT, KC_KP_1,   KC_KP_2,  KC_KP_3,
-                      _______, _______, _______,    TO(0), _______,       _______, TO(3),   XXXXXXX,   XXXXXXX, KC_KP_0
+    _______, KC_ENDASH, CS_EUR, CS_GBP, CS_JPY,   XXXXXXX,                         KC_INS,  KC_HOME, KC_PGUP, KC_MINUS,  KC_EQUAL, _______,
+    _______, XXXXXXX, KC_PSCR, KC_APP,  XXXXXXX,  XXXXXXX,                         KC_DEL,  KC_END,  KC_PGDN, KC_KP_7,   KC_KP_8,  KC_KP_9,
+    KC_CAPS, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,  XXXXXXX,                         XXXXXXX, KC_UP,   XXXXXXX, KC_KP_4,   KC_KP_5,  KC_KP_6,
+    _______, KC_UNDO, KC_CUT,  KC_COPY, KC_PASTE, XXXXXXX, _______,       _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_KP_1,   KC_KP_2,  KC_KP_3,
+                      _______, _______, _______,    TO(0), _______,       _______, TO(3),   _______, KC_RBRC, KC_KP_0
 ),
 /* RAISE
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |  F1  |  F2  |  F3  |  F4  |  F5  |                    |  F6  |  F7  |  F8  |  F9  | F10  | F11  |
+ * | ____ |  F1  |  F2  |  F3  |  F4  |  F5  |                    |  F6  |  F7  |  F8  |  F9  | F10  | F11  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |  `   |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  | F12  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |   !  |   @  |   #  |   $  |   %  |-------.    ,-------|   ^  |   &  |   *  |   (  |   )  |   |  |
- * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |      |  =   |  -   |  +   |   {  |   }  |-------|    |-------|   [  |   ]  |   ;  |   :  |   \  |      |
+ * | ____ |   !  |   @  |   #  |   $  |   %  |-------.    ,-------|   ^  |   &  |   *  |   (  |   )  |   |  |
+ * |------+------+------+------+------+------| ____  |    | ____  |------+------+------+------+------+------|
+ * | ____ |  =   |  -   |  +   |   {  |   }  |-------|    |-------|   [  |   ]  |   ;  |   :  |   \  |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            |      |      |      |TO(0) | /       /       \      \  |TO(3) |      |      |      |
+ *            | ____ | ____ | ____ |TO(0) | / ____  /       \ ____ \  |TO(3) | ____ |      |      |
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
  *            `----------------------------------'           '------''---------------------------'
  */
@@ -103,29 +104,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, KC_F1,   KC_F2,  KC_F3,   KC_F4,   KC_F5,                           KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
     KC_GRV,  KC_1,    KC_2,   KC_3,    KC_4,    KC_5,                            KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_F12,
     _______, KC_EXLM, KC_AT,  KC_HASH, KC_DLR,  KC_PERC,                         KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_PIPE,
-    _______, KC_EQL, KC_MINS, KC_PLUS, KC_LCBR, KC_RCBR, _______,       _______, KC_LBRC, KC_RBRC, KC_SCLN, KC_COLN, KC_BSLS, _______,
-                     _______, _______, _______, TO(0),   _______,       _______, TO(3),   _______, _______, _______
+    _______, KC_EQL, KC_MINS, KC_PLUS, KC_LCBR, KC_RCBR, _______,       _______, KC_LBRC, KC_RBRC, KC_SCLN, KC_COLN, KC_BSLS, XXXXXXX,
+                     _______, _______, _______, TO(0),   _______,       _______, TO(3),   _______, XXXXXXX, XXXXXXX
 ),
 /* ADJUST
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |EE_CLR|Rainbo|RSwirl|Gradnt| Xmas |Twinkl|                    |RGBRed|RGBOrg|RGBYel|RGBGrn|RGBBlu|ACTogg|
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | BOOT | Spd+ | Val+ | Sat+ | Hue+ |Mode+ |                    |RGBInd|RGBVio|RGBWht|      |      |ComboT|
+ * | BOOT | Spd+ | Val+ | Sat+ | Hue+ |Mode+ |                    |RGBInd|RGBVio|RGBWht|RGBGld|      |ComboT|
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |LShift| Spd- | Val- | Sat- | Hue- |Mode- |-------.    ,-------|      | VOLDO| MUTE | VOLUP|      |      |
  * |------+------+------+------+------+------|RGBTogg|    |RL_Rset|------+------+------+------+------+------|
  * |CGTogg|Static|Breath|Snake |Knight|RL_CVG|-------|    |-------|      | PREV | PLAY | NEXT |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            |      |      |      |TO(0) | /       /       \      \  |TO(0) |      |      |      |
+ *            | ____ | ____ | ____ |TO(0) | / ____  /       \ ____ \  |TO(0) | ____ |      |      |
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
  *            `----------------------------------'           '------''---------------------------'
  */
 [_ADJUST] = LAYOUT(
     EE_CLR,  RGB_M_R, RGB_M_SW, RGB_M_G, RGB_M_X, RGB_M_TW,                     RL_RED,  RL_ORG,  RL_YEL,  RL_GRN,  RL_BLU,  AC_TOGG,
-    QK_BOOT, RGB_SPI, RGB_VAI, RGB_SAI, RGB_HUI, RGB_MOD,                       RL_IND,  RL_VIO,  RL_WHT,  XXXXXXX, XXXXXXX, CM_TOGG,
+    QK_BOOT, RGB_SPI, RGB_VAI, RGB_SAI, RGB_HUI, RGB_MOD,                       RL_IND,  RL_VIO,  RL_WHT,  RL_GLD,  XXXXXXX, CM_TOGG,
     KC_LSFT, RGB_SPD, RGB_VAD, RGB_SAD, RGB_HUD, RGB_RMOD,                      XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, XXXXXXX,
-    CG_TOGG, RGB_M_P, RGB_M_B, RGB_M_SN, RGB_M_K, RL_CVGRN, RGB_TOG,   RL_RESET, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
-                      _______, _______, _______, TO(0),   _______,     _______, TO(0),   _______, _______, _______
+    CG_TOGG, RGB_M_P, RGB_M_B, RGB_M_SN, RGB_M_K, RL_CVGRN, RGB_TOG,   RL_RST,  XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
+                      _______, _______, _______, TO(0),   _______,     _______, TO(0),   _______, XXXXXXX, XXXXXXX
     )
 };
 
@@ -179,9 +180,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 unregister_code(KC_LALT);
             }
             break;
-        case RL_RESET:
+        case RL_RST:
             if (record->event.pressed) {
-                rgblight_sethsv(HSV_GOLD);    // Hue: teal/green, Sat: max, Val: max limit
+                rgblight_sethsv(HSV_WHITE);
                 rgblight_mode(9);
                 rgblight_set_speed(0);
                 return false;
@@ -238,6 +239,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case RL_WHT:
         if (record->event.pressed) {
                 rgblight_sethsv(HSV_WHITE);
+                return false;
+            }
+            break;
+        case RL_GLD:
+        if (record->event.pressed) {
+                rgblight_sethsv(HSV_GOLD);
                 return false;
             }
             break;

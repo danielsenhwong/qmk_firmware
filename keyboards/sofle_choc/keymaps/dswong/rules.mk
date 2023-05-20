@@ -13,11 +13,17 @@ CONVERT_TO = elite_pi
 ENCODER_ENABLE = yes
 ENCODER_MAP_ENABLE = yes
 OLED_ENABLE = yes
-RGB_MATRIX_ENABLE = no    # Does not work with RP2040
+RGB_MATRIX_ENABLE = no      # Does not work with RP2040
 RGBLIGHT_ENABLE = yes
+LTO_ENABLE = no             # Disable for RP2040
+
+# QMK feature options
+AUTOCORRECT_ENABLE = no		# WIP
+COMBO_ENABLE = no		    # WIP
+EXTRAKEY_ENABLE = yes       # Enable audio keys and system control
+TAP_DANCE_ENABLE = no		# WIP
 TRI_LAYER_ENABLE = yes
-EXTRAKEY_ENABLE = yes     # Enable audio keys and system control
-LTO_ENABLE = no           # Disable for RP2040
+WPM_ENABLE = yes
 
 # VIA support
 VIA_ENABLE = yes

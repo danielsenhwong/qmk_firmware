@@ -27,21 +27,6 @@
 #define SPLIT_TRANSPORT_MIRROR
 #define SPLIT_LAYER_STATE_ENABLE
 
-#define RGBLIGHT_DEFAULT_MODE RGBLIGHT_MODE_RAINBOW_SWIRL
-#define RGBLIGHT_DEFAULT_SPD 100
-
-/* RGB Light Animations */
-// #define RGBLIGHT_EFFECT_ALTERNATING
-// #define RGBLIGHT_EFFECT_BREATHING
-// #define RGBLIGHT_EFFECT_CHRISTMAS
-// #define RGBLIGHT_EFFECT_KNIGHT
-// #define RGBLIGHT_EFFECT_RAINBOW_MOOD
-// #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
-// #define RGBLIGHT_EFFECT_RGB_TEST
-// #define RGBLIGHT_EFFECT_SNAKE
-// #define RGBLIGHT_EFFECT_STATIC_GRADIENT
-// #define RGBLIGHT_EFFECT_TWINKLE
-
 // Re-map the LEDs so animations look better
 #define LED_LAYOUT( \
     L00, L01, L02, L03, L04, L05,           R00, R01, R02, R03, R04, R05,  \
@@ -80,7 +65,7 @@
 /* RGB Matrix settings */
 #ifdef RGB_MATRIX_ENABLE
 #define WS2812_DI_PIN D3
-//#define WS2812_PIO_USE_PIO1
+//#define WS2812_PIO_USE_PIO1 // For RGB_MATRIX debugging
 #define RGB_MATRIX_LED_COUNT 58
 
 #define RGB_DISABLE_WHEN_USB_SUSPENDED     // turn off effects when suspended

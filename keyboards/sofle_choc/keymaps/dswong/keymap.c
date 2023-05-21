@@ -49,9 +49,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | Tab  |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  | - _  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |LShift|   A  |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |  ; : | Enter|
+ * |LCtrl |   A  |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |  ; : | Enter|
  * |------+------+------+------+------+------|  Mute |    | Pause |------+------+------+------+------+------|
- * |LCtrl |   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |  , < |  . > |  / ? | ' "  |
+ * |LShift|   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |  , < |  . > |  / ? | ' "  |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *            | MEH  | LGUI | LALT |TO(1) | /Space  /       \Space \  |TO(2) |RSHIFT| [ {  | = +  |
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
@@ -61,8 +61,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY] = LAYOUT(
     QK_GESC,  KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                       KC_6,     KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
     KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                       KC_Y,     KC_U,    KC_I,    KC_O,    KC_P,    KC_MINUS,
-    KC_LSFT,  KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                       KC_H,     KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
-    KC_LCTL,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,    KC_MUTE,   KC_MPLY,KC_N,     KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_QUOT,
+    KC_LCTL,  KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                       KC_H,     KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
+    KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,    KC_MUTE,   KC_MPLY,KC_N,     KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_QUOT,
                       KC_MEH,  KC_LGUI, KC_LALT, TO(1),   KC_SPC,    KC_SPC, TO(2),    KC_RSFT, KC_LBRC, KC_EQUAL
 ),
 /* LOWER
@@ -71,9 +71,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | ____ |      | Pscr | Menu |      |      |                    | Del  | End  | PgDn | KP_7 | KP_8 | KP_9 |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | Caps | LAlt | LCtl |LShift|      |      |-------.    ,-------|      |  Up  |      | KP_4 | KP_5 | KP_6 |
+ * | ____ | LAlt | LCtl |LShift|      |      |-------.    ,-------|      |  Up  |      | KP_4 | KP_5 | KP_6 |
  * |------+------+------+------+------+------| ____  |    | ____  |------+------+------+------+------+------|
- * | ____ | Undo |  Cut | Copy | Paste|      |-------|    |-------| Left | Down | Right| KP_1 | KP_2 | KP_3 |
+ * | Caps | Undo |  Cut | Copy | Paste|      |-------|    |-------| Left | Down | Right| KP_1 | KP_2 | KP_3 |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *            | ____ | ____ | ____ |TO(0) | / ____  /       \ ____ \  |TO(3) | ____ | ] }  | KP_0 |
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
@@ -82,8 +82,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LOWER] = LAYOUT(
     _______, KC_ENDASH, CS_EUR, CS_GBP, CS_JPY,   XXXXXXX,                         KC_INS,  KC_HOME, KC_PGUP, KC_MINUS,  KC_EQUAL, _______,
     _______, XXXXXXX, KC_PSCR, KC_APP,  XXXXXXX,  XXXXXXX,                         KC_DEL,  KC_END,  KC_PGDN, KC_KP_7,   KC_KP_8,  KC_KP_9,
-    KC_CAPS, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,  XXXXXXX,                         XXXXXXX, KC_UP,   XXXXXXX, KC_KP_4,   KC_KP_5,  KC_KP_6,
-    _______, KC_UNDO, KC_CUT,  KC_COPY, KC_PASTE, XXXXXXX, _______,       _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_KP_1,   KC_KP_2,  KC_KP_3,
+    _______, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,  XXXXXXX,                         XXXXXXX, KC_UP,   XXXXXXX, KC_KP_4,   KC_KP_5,  KC_KP_6,
+    KC_CAPS, KC_UNDO, KC_CUT,  KC_COPY, KC_PASTE, XXXXXXX, _______,       _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_KP_1,   KC_KP_2,  KC_KP_3,
                       _______, _______, _______,    TO(0), _______,       _______, TO(3),   _______, KC_RBRC, KC_KP_0
 ),
 /* RAISE
